@@ -3,6 +3,13 @@
 > NOTE: Install cargo watch with `cargo install cargo-watch`.
 
 ```sh
+# starting postgresql
+psql postgres
+# creating the super user needed in psql
+CREATE ROLE postgres WITH LOGIN SUPERUSER PASSWORD 'welcome';
+```
+
+```sh
 
 # Terminal 1 - To run the server.
 cargo watch -q -c -w src/ -w .cargo/ -x "run"

@@ -5,6 +5,8 @@ mod logs;
 mod model;
 mod web;
 
+// #[cfg(test)]
+pub mod _dev_utils;
 pub use self::error::{Error, Result};
 use ::tokio::net::TcpListener;
 use axum::{Json, Router, routing::get};
@@ -26,6 +28,7 @@ async fn main() -> Result<()> {
         .with_env_filter(EnvFilter::from_default_env())
         .init();
 
+    _dev_utils::init_dev().await;
     let model_manager: ModelManager = ModelManager::new();
     let listener = TcpListener::bind("0.0.0.0:8080").await.unwrap();
     let routes_all = Router::new()
