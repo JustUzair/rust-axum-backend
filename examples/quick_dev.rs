@@ -9,7 +9,7 @@ use serde_json::{Value, json};
 async fn main() -> Result<()> {
     let hc = httpc_test::new_client("http://localhost:8080")?;
 
-    // hc.do_get("/index.html").await?.print().await?;
+    hc.do_get("/index.html").await?.print().await?;
 
     // -- Login
     let req_login = hc.do_post(
