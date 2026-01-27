@@ -3,7 +3,6 @@
 > NOTE: Install cargo watch with `cargo install cargo-watch`.
 
 ```sh
-RUST_LOG="axum_server=debug"  cargo watch -q -c -w src/ -x "run"
 
 # Terminal 1 - To run the server.
 cargo watch -q -c -w src/ -x "run"
