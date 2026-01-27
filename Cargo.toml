@@ -1,0 +1,42 @@
+[package]
+name = "axum-server"
+version = "0.1.0"
+edition = "2024"
+
+
+[dependencies]
+# -- Serde
+serde_with = { version = "3", features = ["time_0_3"] }
+# -- Data
+# Note: we lock modql version during rcs
+modql = { version = "0.4.1", features = ["with-sea-query"] }
+sqlx = { version = "0.8", features = [
+    "macros",
+    "runtime-tokio",
+    "postgres",
+    "uuid",
+] }
+sea-query = "0.32"
+sea-query-binder = { version = "0.7", features = [
+    "sqlx-postgres",
+    "with-uuid",
+    "with-time",
+] }
+# -- JSON-RPC
+# Lock to specific version during 0.1.x
+rpc-router = { version = "=0.2.0-alpha.1" }
+# -- Web
+axum = { version = "0.8", features = ["macros"] }
+tower-http = { version = "0.6", features = ["fs"] }
+tower-cookies = "0.11"
+# -- Others
+time = { version = "0.3", features = ["formatting", "parsing", "serde"] }
+derive_more = { version = "1.0.0-beta", features = ["from", "display"] }
+tokio = { version = "1.49.0", features = ["full"] }
+serde_json = "1.0.149"
+# -- Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[dev-dependencies]
+httpc-test = "0.1"
