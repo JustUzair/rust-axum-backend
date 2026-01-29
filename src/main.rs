@@ -29,7 +29,7 @@ async fn main() -> Result<()> {
         .init();
 
     _dev_utils::init_dev().await;
-    let model_manager: ModelManager = ModelManager::new();
+    let model_manager = ModelManager::new().await?;
     let listener = TcpListener::bind("0.0.0.0:8080").await.unwrap();
     let routes_all = Router::new()
         .route(
@@ -48,6 +48,6 @@ async fn main() -> Result<()> {
 
     axum::serve(listener, routes_all.into_make_service())
         .await
-        .map_err(|msg| format!("❌ Error starting server\n{msg}"));
+        .map_err(|msg| format!("❌ Error starting server\n{msg}"))?;
     Ok(())
 }
