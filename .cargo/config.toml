@@ -1,3 +1,11 @@
+# -- Service Environment Variables
+
+# -- Secrets
+
+SERVICE_DB_URL = "postgres://app_user:dev_only_pwd@localhost/app_db"
+
+
+# -- ConfigMap
 [env]
 
 RUST_LOG = "axum_server=debug"
