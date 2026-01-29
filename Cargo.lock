@@ -122,6 +122,7 @@ dependencies = [
  "rpc-router",
  "sea-query",
  "sea-query-binder",
+ "serde",
  "serde_json",
  "serde_with",
  "sqlx",
